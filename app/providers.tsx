@@ -4,6 +4,8 @@ import type { ThemeProviderProps } from "next-themes";
 import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
 import { useRouter } from "next/navigation";
+// import { NextUIProvider } from "@heroui/react";
+// import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ImageKitProvider } from "imagekitio-next";
 import { ToastProvider } from "@heroui/toast";
@@ -49,6 +51,11 @@ const authenticator = async () => {
 
 export function Providers({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
+  // <NextThemesProvider {...themeProps}>
+          
+  //         {children}
+          
+  //         </NextThemesProvider>
 
   return (
     <HeroUIProvider navigate={router.push}>
@@ -58,8 +65,17 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || ""}
       >
         <ImageKitAuthContext.Provider value={{ authenticate: authenticator }}>
-          <ToastProvider placement="top-right" />
-          <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+          <ToastProvider placement="top-right" />          
+          {/* <NextUIProvider navigate={router.push}> */}
+          <NextThemesProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange={false}
+          >
+            {children}
+          </NextThemesProvider>
+          {/* </NextUIProvider> */}
         </ImageKitAuthContext.Provider>
       </ImageKitProvider>
     </HeroUIProvider>

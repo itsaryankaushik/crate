@@ -39,4 +39,4 @@ export const config = {
   ],
 };
 
-export const runtime = 'nodejs';
+// export const runtime = 'nodejs';
