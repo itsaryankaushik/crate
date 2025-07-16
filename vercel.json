@@ -1,36 +1,7 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "bun run build",
-        "outputDirectory": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|webp|json|woff|woff2|ttf|eot))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    }
-  ],
+  "buildCommand": "bun run build",
   "env": {
     "NODE_ENV": "production"
   }
