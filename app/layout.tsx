@@ -11,7 +11,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Crate",
-  description: "Secure cloud storage for your images, powered by ImageKit",
+  description: "Secure cloud storage for your images and PDFs, powered by ImageKit",
+  icons: {
+    icon: '/logo2.png',
+    shortcut: '/logo2.png',
+    apple: '/logo2.png',
+  },
 };
 
 export default function RootLayout({
